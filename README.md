@@ -1,3 +1,3 @@
 # Todo App
 
-![ScreenShot]()
+![ScreenShot](https://github.com/sidsinha/todo-list/blob/master/public/home-screen.png)
