@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.content {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+}
+.todolist {
+  border: 1px solid #ccc;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ccc;
+}
+.todo {
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px;
+}
+span.todo-index {
+  float: left;
+  font-weight: bold;
+}
+span.todo-name {
+  float: left;
+  margin-left: 10px;
+}
+
+span.todo-action {
+  float: right;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  padding: 2px 7px;
+}
+.cancel {
+  background-color: orange;
+}
+.edit {
+  background-color: yellowgreen;
+}
+.delete {
+  background-color: #ff0000;
+}
+.content {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  padding: 25px 10px;
+}
+.create-todo {
+  padding: 20px;
+}
+input[type="text"] {
+  width: 300px;
+  padding: 10px;
+}
+button {
+  padding: 10px 35px;
+  font-weight: bold;
+}
+.clear {
+  clear: both;
+}
