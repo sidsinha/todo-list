@@ -1,71 +1,77 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import CreateTodo from "./components/create-todo";
 import TodoList from "./components/todo-list";
 import TodoContext from "./context/todo-context";
 
-// const TodoList2 = lazy(() => import("./components/todo-list"));
-
-const json = require("./data.json");
-
+import { ITodo, IEditTodo } from "./types";
 import logo from './logo.svg';
 import './App.css';
+const json = require("./data.json");
 
-const App = () => {
 
-  function useEditObj() {
-    const [editItemObj, setEditItemObj] = useState({});
 
-    const emptyEditObj = () => {
-      setEditItemObj({});
+const App: React.FC = () => {
+
+  const [todoData, setTodoData] = useState<ITodo[]>([]);
+  const [editItemObj, emptyEditObj, setEditObj] = useEditObj();
+  const [editMode, enableEditMode, disableEditMode] = useEditMode();
+
+  function useEditObj(): [IEditTodo, () => void, (obj:IEditTodo) => void] {
+    const [editItemObj, setEditItemObj] = useState<IEditTodo>({
+      index: -1
+    });
+
+    const emptyEditObj = ():void => {
+      setEditItemObj({
+        index: -1
+      });
     }
-    const setEditObj = (obj) => {
+    const setEditObj = (obj:IEditTodo):void => {
       setEditItemObj(obj);
     }
     return [editItemObj, emptyEditObj, setEditObj];
   }
 
-  function useEditMode() {
+  function useEditMode(): [boolean, () => void, () => void] {
     const [editMode, setEditMode] = useState(false);
 
-    const enableEditMode = () => {
+    const enableEditMode = ():void => {
       setEditMode(true);
     }
-    const disableEditMode = () => {
+    const disableEditMode = ():void => {
       setEditMode(false);
     }
     return [editMode, enableEditMode, disableEditMode];
   }
   
-  const [todoData, setTodoData] = useState([]);
-  const [editItemObj, emptyEditObj, setEditObj] = useEditObj();
-  const [editMode, enableEditMode, disableEditMode] = useEditMode();
-
-
   useEffect(() => {
-      const timer = setTimeout(()=>{ 
-        setTodoData(json.data);
-      }, 1000);
-      return () => {
-        clearTimeout(timer);
-      };
+    const timer = setTimeout(()=>{ 
+      setTodoData(json.data);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
-  const addTodoFn = name => {
-    const newId  = todoData.length + 1;
-    const newTodoObj = {
+  const addTodoFn = (name:string):void => {
+    const newId:number  = todoData.length + 1;
+    const newTodoObj:ITodo = {
       id: newId,
-      name: name
+      name: name,
+      isEditing: false
     }
     setTodoData([
       ...todoData,
       newTodoObj
     ]);
   }
-  const updateTodoFn = name => {
-    const todoItem = todoData[editItemObj.index];
-    todoItem.name = name;
-    todoItem.isEditing = false;
+
+  const updateTodoFn = (name:string):void => {
+    const todoItem:any = todoData[editItemObj.index];
+      todoItem.name = name;
+      todoItem.isEditing = false;
+    
     setTodoData([
       ...todoData
     ]);
@@ -73,13 +79,13 @@ const App = () => {
     emptyEditObj()
   }
 
-  const removeTodoFn = id => {
+  const removeTodoFn = (id:number):void => {
     setTodoData(todoData.filter((todo)=>todo.id !== id));
     disableEditMode();
     emptyEditObj()
   }
 
-  const editTodoFn = index => {
+  const editTodoFn = (index:number):void => {
     const todoItem = todoData[index];
     todoItem.isEditing = true;
     setTodoData([
@@ -92,7 +98,7 @@ const App = () => {
     })
   }
 
-  const cancelTodoFn = index => {
+  const cancelTodoFn = (index:number):void => {
     const todoItem = todoData[index];
     todoItem.isEditing = false;
     setTodoData([
@@ -100,14 +106,13 @@ const App = () => {
     ]);
     disableEditMode();
   }
-
   return (
-    <div className="App">
-      <div className="App-header">
+    <div className="tc courier">
+      <div className="bg-black">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to Todo App</h2>
+        <h2 className="white">Welcome to Todo App</h2>
       </div>
-        <div className="content">
+        <div className="w-70 w-90-m w-100-s mt0 center bg-light-gray pa3">
           <h4>You have {todoData.length} todo items</h4>
           <CreateTodo 
             editItemObj={editItemObj} 

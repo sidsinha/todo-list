@@ -1,6 +1,7 @@
 import React from "react";
+import { ITodoContext } from "./../types";
 
-const TodoContext = React.createContext({
+const TodoContext = React.createContext<ITodoContext>({
     cancelTodoFn: () => {},
     editTodoFn: () => {},
     removeTodoFn: () => {},

@@ -1,24 +1,102 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* .App-header {
+  background-color: #282c34;
+  max-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-intro {
-  font-size: large;
-}
+/* .App-link {
+  color: #61dafb;
+} */
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+
+/* .content {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+} */
+/* .todolist {
+  border: 1px solid #ccc;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ccc;
+} */
+/* .todo {
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px;
+} */
+/* span.todo-index {
+  float: left;
+  font-weight: bold;
+} */
+/* span.todo-name {
+  float: left;
+  margin-left: 10px;
+} */
+
+/* span.todo-action {
+  float: right;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  padding: 2px 7px;
+} */
+/* .cancel {
+  background-color: orange;
+} */
+/* .edit {
+  background-color: yellowgreen;
+} */
+/* .delete {
+  background-color: #ff0000;
+} */
+/* .content {
+  width: 1000px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  padding: 25px 10px;
+} */
+/* .create-todo {
+  padding: 20px;
+} */
+/* input[type="text"] {
+  width: 300px;
+  padding: 10px;
+} */
+/* button {
+  padding: 10px 35px;
+  font-weight: bold;
+} */
+/* .clear {
+  clear: both;
+} */
