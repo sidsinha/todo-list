@@ -4,10 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { ReactQueryDevtools } from 'react-query-devtools'
+
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
+const client = new ApolloClient({
+  uri: 'https://api-us-west-2.graphcms.com/v2/ckb6w8kn5054n01wk0w77cc0k/master',
+});
+
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+    <ReactQueryDevtools initialIsOpen={false} />
+  </ApolloProvider>,
   document.getElementById('root')
 );
 

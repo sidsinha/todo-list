@@ -26,4 +26,10 @@ export type ITodoContext = {
     editTodoFn: (arg0: number) => void,
     removeTodoFn: (arg0: number) => void,
     editMode: boolean
-  };
+};
+
+export interface APIResponse {
+    data: {
+        [postst: string]: ITodo[]
+    };
+}

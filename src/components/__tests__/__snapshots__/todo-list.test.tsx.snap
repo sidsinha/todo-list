@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  class="ba b--silver w-70 w-100-m center bg-silver"
+>
+  <div
+    class="bg-white ma2 pa3 flex justify-between"
+  >
+    <span
+      class="b pr2"
+    >
+      1
+      .
+    </span>
+    <span
+      class="tl"
+      data-testid="todo-name"
+      style="flex: 2;"
+    >
+      Get Milk
+    </span>
+    <span
+      class="f6 pointer mr3 bg-light-green ph3"
+      data-testid="todo-edit"
+    >
+      EDIT
+    </span>
+    <span
+      class="f6 pointer bg-red ph3 white hover-bg-black"
+      data-testid="todo-delete"
+    >
+      DELETE
+    </span>
+  </div>
+  <div
+    class="bg-white ma2 pa3 flex justify-between"
+  >
+    <span
+      class="b pr2"
+    >
+      2
+      .
+    </span>
+    <span
+      class="tl"
+      data-testid="todo-name"
+      style="flex: 2;"
+    >
+      Go for Run
+    </span>
+    <span
+      class="f6 pointer mr3 bg-light-green ph3"
+      data-testid="todo-edit"
+    >
+      EDIT
+    </span>
+    <span
+      class="f6 pointer bg-red ph3 white hover-bg-black"
+      data-testid="todo-delete"
+    >
+      DELETE
+    </span>
+  </div>
+  <div
+    class="bg-white ma2 pa3 flex justify-between"
+  >
+    <span
+      class="b pr2"
+    >
+      3
+      .
+    </span>
+    <span
+      class="tl"
+      data-testid="todo-name"
+      style="flex: 2;"
+    >
+      Watch Netflix
+    </span>
+    <span
+      class="f6 pointer mr3 bg-light-green ph3"
+      data-testid="todo-edit"
+    >
+      EDIT
+    </span>
+    <span
+      class="f6 pointer bg-red ph3 white hover-bg-black"
+      data-testid="todo-delete"
+    >
+      DELETE
+    </span>
+  </div>
+</div>
+`;

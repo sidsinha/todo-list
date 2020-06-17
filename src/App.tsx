@@ -1,58 +1,39 @@
 import React, { useEffect, useState } from 'react';
 
+//Importing Other react components
 import CreateTodo from "./components/create-todo";
 import TodoList from "./components/todo-list";
+
+//Importing Context
 import TodoContext from "./context/todo-context";
 
-import { ITodo, IEditTodo } from "./types";
-import logo from './logo.svg';
-import './App.css';
-const json = require("./data.json");
+//Importing Interfaces
+import { ITodo, APIResponse } from "./types";
 
+//Importing Hooks
+import useEditMode from "./hooks/useEditMode";
+import useEditObj from "./hooks/useEditObj";
+import useTodos from "./hooks/useTodos";
 
+//Importing Styles, Images
+import "./App.css";
+import logo from "./logo.svg";
+
+// const jsonData = require("./data.json");
 
 const App: React.FC = () => {
+
+  const { status, data } = useTodos();
 
   const [todoData, setTodoData] = useState<ITodo[]>([]);
   const [editItemObj, emptyEditObj, setEditObj] = useEditObj();
   const [editMode, enableEditMode, disableEditMode] = useEditMode();
 
-  function useEditObj(): [IEditTodo, () => void, (obj:IEditTodo) => void] {
-    const [editItemObj, setEditItemObj] = useState<IEditTodo>({
-      index: -1
-    });
-
-    const emptyEditObj = ():void => {
-      setEditItemObj({
-        index: -1
-      });
-    }
-    const setEditObj = (obj:IEditTodo):void => {
-      setEditItemObj(obj);
-    }
-    return [editItemObj, emptyEditObj, setEditObj];
-  }
-
-  function useEditMode(): [boolean, () => void, () => void] {
-    const [editMode, setEditMode] = useState(false);
-
-    const enableEditMode = ():void => {
-      setEditMode(true);
-    }
-    const disableEditMode = ():void => {
-      setEditMode(false);
-    }
-    return [editMode, enableEditMode, disableEditMode];
-  }
-  
   useEffect(() => {
-    const timer = setTimeout(()=>{ 
-      setTodoData(json.data);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+    if(status === "success") {
+      setTodoData(data);
+    }
+  }, [status, data]);
 
   const addTodoFn = (name:string):void => {
     const newId:number  = todoData.length + 1;
@@ -106,12 +87,13 @@ const App: React.FC = () => {
     ]);
     disableEditMode();
   }
+
   return (
-    <div className="tc courier">
-      <div className="bg-black">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2 className="white">Welcome to Todo App</h2>
-      </div>
+      <div className="tc courier">
+        <div className="bg-black">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2 className="white">Welcome to Todo App</h2>
+        </div>
         <div className="w-70 w-90-m w-100-s mt0 center bg-light-gray pa3">
           <h4>You have {todoData.length} todo items</h4>
           <CreateTodo 
@@ -130,7 +112,7 @@ const App: React.FC = () => {
           <TodoList todoData={todoData} />
         </TodoContext.Provider>
         </div>
-    </div>
+      </div>
   );
 }
 

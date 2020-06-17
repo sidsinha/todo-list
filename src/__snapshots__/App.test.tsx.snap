@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Todo App 1`] = `
+<div
+  class="tc courier"
+>
+  <div
+    class="bg-black"
+  >
+    <img
+      alt="logo"
+      class="App-logo"
+      src="logo.svg"
+    />
+    <h2
+      class="white"
+    >
+      Welcome to Todo App
+    </h2>
+  </div>
+  <div
+    class="w-70 w-90-m w-100-s mt0 center bg-light-gray pa3"
+  >
+    <h4>
+      You have 
+      0
+       todo items
+    </h4>
+    <div
+      class="pa3"
+    >
+      <input
+        class="pa2 w-40 w-60-m"
+        name="todo_name"
+        placeholder="Enter new todo item"
+        type="text"
+      />
+      <button
+        class="pv2 ph4"
+        type="submit"
+      >
+        ADD
+      </button>
+    </div>
+    <div
+      class="ba b--silver w-70 w-100-m center bg-silver"
+    />
+  </div>
+</div>
+`;
